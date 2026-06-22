@@ -9,7 +9,10 @@ const connectDB = require(
 const PORT =
   process.env.PORT || 5000;
 
-connectDB();
+connectDB().catch((error) => {
+  console.error(error.message);
+  process.exit(1);
+});
 
 app.listen(PORT, () => {
   console.log(
